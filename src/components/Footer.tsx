@@ -18,6 +18,8 @@ const Footer: React.FC = () => {
               projets de concrétiser leurs idées et aux contributeurs de soutenir
               les causes qui leur tiennent à cœur.
             </p>
+            
+            
           </div>
           
           <div className="col-span-1">
