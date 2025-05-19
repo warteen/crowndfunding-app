@@ -20,7 +20,7 @@ interface AuthContextType {
 // Sample users data - In a real app, this would be in a database
 const initialUsers = [
   { id: 1, name: "Jean Dupont", email: "user@example.com", password: "password", role: "Utilisateur" },
-  { id: 2, name: "Marie Martin", email: "admin@example.com", password: "admin123", role: "Administrateur" },
+  { id: 2, name: "Fahmi Chaabouni", email: "admin@example.com", password: "admin123", role: "Administrateur" },
 ];
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
