@@ -8,56 +8,51 @@ on:
 
 jobs:
   build:
-    
-  
     runs-on: ubuntu-latest
 
     steps:
-      - name:  Checkout repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name:  Setup Node.js
+      - name: 🧰 Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name:  Install dependencies
+      - name: 📦 Install dependencies
         run: npm install
 
-      - name:  Build the app
+      - name: 🔨 Build the app
         run: npm run build
 
-      - name:  Vérifier que le dossier dist est généré
+      - name: 📁 Vérifier que le dossier dist est généré
         run: ls -la dist
 
-      - name:  analyze
-      - uses: sonarsource/sonarcloud-github-action@v5
+      - name: 📊 Analyse SonarCloud
+        uses: SonarSource/sonarcloud-github-action@v5
+        with:
+          projectBaseDir: .
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      # If you wish to fail your job when the Quality Gate is red, uncomment the
-      # following lines. This would typically be used to fail a deployment.
-      # - uses: SonarSource/sonarqube-quality-gate-action@v1
-      #   timeout-minutes: 5
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      - name:  Login to DockerHub
+      # 🔐 Login DockerHub
+      - name: 🔐 Login to DockerHub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Set up QEMU
+      - name: ⚙️ Setup QEMU
         uses: docker/setup-qemu-action@v3
-      
-      - name: Set up Docker Buildx
+
+      - name: ⚙️ Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
-      
-      - name: Build and push
+
+      - name: 🐳 Build and Push Docker Image
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: fahmich/crownfunding-app:1.0.${{github.run_number}}
+          tags: fahmich/crownfunding-app:1.0.${{ github.run_number }}
