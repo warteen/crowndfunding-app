@@ -11,26 +11,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout repository
+      - name:  Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: 🧰 Setup Node.js
+      - name:  Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: 📦 Install dependencies
+      - name:  Install dependencies
         run: npm install
 
-      - name: 🔨 Build the app
+      - name:  Build the app
         run: npm run build
 
-      - name: 📁 Vérifier que le dossier dist est généré
+      - name:  Vérifier que le dossier dist est généré
         run: ls -la dist
-
-      - name: 📊 Analyse SonarCloud
+      #  Analyse with sonarqube
+      - name:  Analyse SonarCloud
         uses: SonarSource/sonarcloud-github-action@v5
         with:
           projectBaseDir: .
@@ -38,8 +38,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-      # 🔐 Login DockerHub
-      - name: 🔐 Login to DockerHub
+      #  Login DockerHub
+      - name:  Login to DockerHub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
