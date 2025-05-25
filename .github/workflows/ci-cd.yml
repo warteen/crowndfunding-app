@@ -44,4 +44,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: user/app:latest
+          tags: fahmichaabouni/crownfunding-app:1.0.${{github.run_number}}
