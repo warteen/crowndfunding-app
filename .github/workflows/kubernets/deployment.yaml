@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crowdfunding-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crowdfunding-frontend
+  template:
+    metadata:
+      labels:
+        app: crowdfunding-frontend
+    spec:
+      containers:
+        - name: crowdfunding-app
+          image: crowndfindungregistry.azurecr.io/fundrise-app:v1
+          ports:
+            - containerPort: 80
