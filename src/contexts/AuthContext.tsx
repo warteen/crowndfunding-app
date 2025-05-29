@@ -117,8 +117,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return true;
   };
 
+  const contextValue = React.useMemo(
+    () => ({
+      user,
+      isAuthenticated: !!user,
+      login,
+      logout,
+      register,
+    }),
+    [user, login, logout, register]
+  );
+
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated: !!user, login, logout, register }}>
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );

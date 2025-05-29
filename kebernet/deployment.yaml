@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crowdfunding-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crowdfunding-frontend
+  template:
+    metadata:
+      labels:
+        app: crowdfunding-frontend
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: crowdfunding-frontend
+          image: crowndfindungregistry.azurecr.io/crowdfunding-app:v1
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+              ephemeral-storage: "128Mi"
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
