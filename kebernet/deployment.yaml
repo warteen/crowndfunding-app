@@ -15,7 +15,7 @@ spec:
       automountServiceAccountToken: false
       containers:
         - name: crowdfunding-frontend
-          image: crowndfindungregistry.azurecr.io/crowdfunding-app:v1
+          image: crowndfindungregistry.azurecr.io/crowndfunding-app:v1
           ports:
             - containerPort: 80
           resources:
