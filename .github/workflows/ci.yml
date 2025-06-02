@@ -56,3 +56,23 @@ jobs:
         with:
           push: true
           tags: fahmich/crownfunding-app:1.0.${{ github.run_number }}
+      
+      - name: chekout argotest repo
+        uses: actions/checkout@v3
+        with:
+          repository: warteen/crowndfunding-app
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: argocd
+          ref: main
+
+      - name: update image path 
+        run: |
+          sed -i 's#image: crowndfindungregistry.azurecr.io/crowndfunding-app:v1#image: fahmich/crownfunding-app:1.0.${{ github.run_number }}#g' argocd/argocd/applications/argocd-application.yml
+      - name: Commit and push changes
+        run: |
+          cd argocd
+          git config user.name "GitHub Action"
+          git config user.email "githubaction@gmail.com"
+          git add argocd/applications/argocd-application.yml
+          git commit -m "Update by github action workflow"
+          git push origin main
