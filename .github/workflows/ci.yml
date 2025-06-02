@@ -73,6 +73,6 @@ jobs:
           cd argocd
           git config user.name "GitHub Action"
           git config user.email "githubaction@gmail.com"
-          git add argocd/applications/argocd-application.yml
+          git add argocd/argocd/applications/argocd-application.yml
           git commit -m "Update by github action workflow"
           git push origin main
