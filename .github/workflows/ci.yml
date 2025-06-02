@@ -67,7 +67,7 @@ jobs:
 
       - name: update image path 
         run: |
-          sed -i 's#image: crowndfindungregistry.azurecr.io/crowndfunding-app:v1#image: fahmich/crownfunding-app:1.0.${{ github.run_number }}#g' argocd/argocd/applications/argocd-application.yml
+           sed -i 's|image:.*|image: warteen/crowdfunding-front:latest|' kebernet/deployment.yaml 
       - name: Commit and push changes
         run: |
           cd argocd
