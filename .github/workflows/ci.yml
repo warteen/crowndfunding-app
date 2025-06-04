@@ -31,9 +31,13 @@ jobs:
         run: ls -la dist
       #  Analyse with sonarqube
       - name:  Analyse SonarCloud
-        uses: SonarSource/sonarcloud-github-action@v5
+        uses: SonarSource/sonarcloud-github-action@v2
         with:
           projectBaseDir: .
+          args: >
+            -Dsonar.projectKey=warteen_crowdfunding-app
+            -Dsonar.organization=warteen
+            -Dsonar.sources=src
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: "https://sonarcloud.io"
