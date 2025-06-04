@@ -33,14 +33,8 @@ jobs:
       - name:  Analyse SonarCloud
         uses: sijomc/sonarscan-action@master
         with:
-          projectBaseDir: .
-          args: >
-            -Dsonar.projectKey=devops
-            -Dsonar.organization=warteen
-            -Dsonar.sources=src
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: "https://sonarcloud.io"
+          host: "https://sonarcloud.io"
+          login: ${{ secrets.SONAR_TOKEN }}
           
 
       #  Login DockerHub
