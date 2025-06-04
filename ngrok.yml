@@ -4,7 +4,7 @@ authtoken: 2xalmNHwM9Bwx58DqALmJylpbrN_7dw9WzKKB28qHKayHCUV9
 tunnels:
   sonar:
   
-    addr: http://sonar:9000
+    addr: http://localhost:9000
     proto: http
     schemes:
       - https
