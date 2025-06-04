@@ -35,7 +35,7 @@ jobs:
         with:
           projectBaseDir: .
           args: >
-            -Dsonar.projectKey=warteen_crowdfunding-app
+            -Dsonar.projectKey=devops
             -Dsonar.organization=warteen
             -Dsonar.sources=src
         env:
