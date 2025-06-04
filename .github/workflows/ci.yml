@@ -31,7 +31,7 @@ jobs:
         run: ls -la dist
       #  Analyse with sonarqube
       - name:  Analyse SonarCloud
-        uses: SonarSource/sonarqube-scan-action@v1.2.0
+        uses: SonarSource/sonarcloud-github-action@v5
         with:
           projectBaseDir: .
         env:
