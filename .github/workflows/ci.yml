@@ -31,10 +31,12 @@ jobs:
         run: ls -la dist
       #  Analyse with sonarqube
       - name:  Analyse SonarCloud
-        uses: sijomc/sonarscan-action@master
+        uses: SonarSource/sonarcloud-github-action@v5
         with:
-          host: "https://sonarcloud.io"
-          login: ${{ secrets.SONAR_TOKEN }}
+          projectBaseDir: .
+        env:
+          SONAR_TOKEN: ${ secrets.SONAR_TOKEN }
+          SONAR_HOST_URL: ${ secrets.SONAR_HOST_URL }
           
 
       #  Login DockerHub
