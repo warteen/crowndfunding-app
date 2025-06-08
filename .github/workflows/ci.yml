@@ -35,7 +35,7 @@ jobs:
         with:
           projectBaseDir: .
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOK }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           
 
@@ -43,8 +43,8 @@ jobs:
       - name:   DockerHub
         uses: docker/login-action@v2
         with:
-          username: ${{ Secrets.DOCKER_USERNAME }}
-          password: ${{ Secrets.DOCKER_PASSWORD }}
+          username: ${{ Secrets.DOCKER_USER }}
+          password: ${{ Secrets.DOCKER_PASS }}
 
       - name:  Setup QEMU
         uses: docker/setup-qemu-action@v3
