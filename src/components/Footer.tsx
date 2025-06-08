@@ -70,12 +70,12 @@ const Footer: React.FC = () => {
               Beecoder
             </a></p>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <a href="#" className="hover:text-primary transition-colors">
+            <button type="button" className="hover:text-primary transition-colors bg-transparent border-none p-0 m-0 underline cursor-pointer">
               Mentions légales
-            </a>
-            <a href="#" className="hover:text-primary transition-colors">
+            </button>
+            <button type="button" className="hover:text-primary transition-colors bg-transparent border-none p-0 m-0 underline cursor-pointer">
               Politique de confidentialité
-            </a>
+            </button>
           </div>
         </div>
       </div>
